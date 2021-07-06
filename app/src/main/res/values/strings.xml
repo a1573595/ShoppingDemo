@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ShoppingDemo</string>
+    <string name="account">Account</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="account_cannot_be_empty">Account cannot be empty</string>
+    <string name="password_cannot_be_empty">Password cannot be empty</string>
+    <string name="login_success">Login success</string>
+    <string name="login_failed">Login failed</string>
+    <string name="server_error">Server error</string>
+    <string name="nothing">Nothing</string>
+    <string name="submit">Submit</string>
+    <string name="delete_success">Delete success</string>
+    <string name="submit_success">Submit success</string>
+</resources>
