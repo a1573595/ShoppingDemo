@@ -8,7 +8,7 @@ import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.verify
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -22,8 +22,8 @@ class LoginViewModelTest {
     @get:Rule
     val rxSchedulerRule = RxSchedulerRule()
 
-    private val account = "Chien"
-    private val password = "0123456789"
+    private val account = "account"
+    private val password = "password"
 
     @MockK(relaxed = true)
     private lateinit var repository: IMemberRepository
@@ -53,7 +53,7 @@ class LoginViewModelTest {
         viewModel.login(account, "")
 
         Assert.assertEquals(
-            R.string.account_cannot_be_empty,
+            R.string.password_cannot_be_empty,
             viewModel.passwordError.value?.peekContent()
         )
         Assert.assertEquals(

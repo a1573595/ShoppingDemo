@@ -1,10 +1,10 @@
 package com.a1573595.shoppingdemo
 
-import io.reactivex.Scheduler
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.disposables.Disposable
-import io.reactivex.internal.schedulers.ExecutorScheduler.ExecutorWorker
-import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.internal.schedulers.ExecutorScheduler
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
@@ -18,7 +18,7 @@ class RxSchedulerRule : TestRule {
         }
 
         override fun createWorker(): Worker {
-            return ExecutorWorker({ obj: Runnable -> obj.run() }, true)
+            return ExecutorScheduler.ExecutorWorker({ obj: Runnable -> obj.run() }, true, false)
         }
     }
 
@@ -30,8 +30,8 @@ class RxSchedulerRule : TestRule {
                 RxJavaPlugins.setInitComputationSchedulerHandler { immediate }
                 RxJavaPlugins.setInitNewThreadSchedulerHandler { immediate }
                 RxJavaPlugins.setInitSingleSchedulerHandler { immediate }
+                RxJavaPlugins.setComputationSchedulerHandler { immediate }
                 RxAndroidPlugins.setInitMainThreadSchedulerHandler { immediate }
-//                RxJavaPlugins.setComputationSchedulerHandler { immediate }  // ???
 
                 try {
                     base.evaluate()

@@ -5,8 +5,8 @@ import androidx.collection.SparseArrayCompat
 import com.a1573595.shoppingdemo.data.Goods
 import com.a1573595.shoppingdemo.database.Cart
 import com.a1573595.shoppingdemo.database.DBHelper
-import io.reactivex.Completable
-import io.reactivex.Flowable
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Flowable
 
 class GoodsRepository : IGoodsRepository {
     override fun fetchGoods(complete: (SparseArrayCompat<List<Goods>>) -> Unit) {

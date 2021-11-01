@@ -1,6 +1,5 @@
 package com.a1573595.shoppingdemo.page.cart
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -12,7 +11,7 @@ import com.a1573595.shoppingdemo.repository.IGoodsRepository
 import com.a1573595.shoppingdemo.repository.IShoppingRepository
 import com.a1573595.shoppingdemo.repository.ShoppingRepository
 import com.a1573595.shoppingdemo.tool.Event
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class CartViewModel(
     private val goodsRepository: IGoodsRepository = GoodsRepository(),
@@ -62,7 +61,6 @@ class CartViewModel(
                         toastResource.postValue(Event(R.string.server_error))
                     }
                 }, {
-                    Log.e("test", it.toString())
                     isLoading.postValue(Event(false))
                     toastResource.postValue(Event(R.string.server_error))
                 })

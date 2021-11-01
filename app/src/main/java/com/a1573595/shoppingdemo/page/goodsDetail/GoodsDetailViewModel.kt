@@ -6,8 +6,8 @@ import com.a1573595.shoppingdemo.data.Goods
 import com.a1573595.shoppingdemo.repository.GoodsRepository
 import com.a1573595.shoppingdemo.repository.IGoodsRepository
 import com.a1573595.shoppingdemo.tool.Event
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class GoodsDetailViewModel(private val repository: IGoodsRepository = GoodsRepository()) :
     BaseViewModel() {

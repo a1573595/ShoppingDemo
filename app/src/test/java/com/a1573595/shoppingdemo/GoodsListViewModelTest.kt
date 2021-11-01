@@ -8,7 +8,7 @@ import com.a1573595.shoppingdemo.repository.GoodsRepository
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.reactivex.Flowable
+import io.reactivex.rxjava3.core.Flowable
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule

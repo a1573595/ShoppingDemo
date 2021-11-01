@@ -8,25 +8,28 @@ import com.a1573595.shoppingdemo.R
 import com.a1573595.shoppingdemo.repository.IMemberRepository
 import com.a1573595.shoppingdemo.repository.MemberRepository
 import com.a1573595.shoppingdemo.tool.Event
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class LoginViewModel(private val repository: IMemberRepository = MemberRepository()) :
     BaseViewModel() {
-    var accountError: MutableLiveData<Event<Int>> = MutableLiveData()
-    var passwordError: MutableLiveData<Event<Int>> = MutableLiveData()
+    var accountError: MutableLiveData<Event<Int?>> = MutableLiveData()
+    var passwordError: MutableLiveData<Event<Int?>> = MutableLiveData()
 
     val loginSuccess: LiveData<Boolean> = Transformations.map(toastResource) {
         it.peekContent() == R.string.login_success
     }
 
     fun login(account: String, password: String) {
+        accountError.postValue(Event(null))
+        passwordError.postValue(Event(null))
+
         when {
             account.isBlank() -> {
                 accountError.postValue(Event(R.string.account_cannot_be_empty))
                 toastResource.postValue(Event(R.string.account_cannot_be_empty))
             }
             password.isBlank() -> {
-                passwordError.postValue(Event(R.string.account_cannot_be_empty))
+                passwordError.postValue(Event(R.string.password_cannot_be_empty))
                 toastResource.postValue(Event(R.string.password_cannot_be_empty))
             }
             else -> {

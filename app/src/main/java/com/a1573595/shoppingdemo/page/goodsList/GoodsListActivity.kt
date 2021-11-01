@@ -3,7 +3,6 @@ package com.a1573595.shoppingdemo.page.goodsList
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,7 +27,6 @@ class GoodsListActivity : BaseActivity<ActivityGoodsListBinding, GoodsListViewMo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("test", "onCreate")
 
         viewBinding.recyclerView.layoutManager = LinearLayoutManager(this)
 

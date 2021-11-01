@@ -4,8 +4,8 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.a1573595.shoppingdemo.tool.Event
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     private val disposable = CompositeDisposable()
@@ -15,12 +15,12 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
 
     var isLoading: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
-    protected open fun addDisposable(d: Disposable?) {
-        disposable.add(d!!)
+    protected open fun addDisposable(d: Disposable) {
+        disposable.add(d)
     }
 
-    protected open fun deleteDisposable(d: Disposable?) {
-        disposable.delete(d!!)
+    protected open fun deleteDisposable(d: Disposable) {
+        disposable.delete(d)
     }
 
     override fun onCleared() {

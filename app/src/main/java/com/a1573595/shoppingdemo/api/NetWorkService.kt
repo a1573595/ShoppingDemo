@@ -1,8 +1,10 @@
 package com.a1573595.shoppingdemo.api
 
+import com.a1573595.shoppingdemo.BuildConfig
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
@@ -18,11 +20,16 @@ class NetWorkService private constructor() {
     var shoppingAPI: ShoppingAPI
 
     init {
+        val logger = HttpLoggingInterceptor()
+        logger.level =
+            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+
         val client = OkHttpClient.Builder()
+            .addInterceptor(logger)
             .build()
 
         val retrofit = Retrofit.Builder()
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(ApiConfig.WEB_HOST)
             .client(client)

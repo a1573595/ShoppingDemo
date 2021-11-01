@@ -20,19 +20,7 @@ class GoodsListAdapter(private val onClick: (Goods) -> Unit) :
     inner class GoodsListViewHolder(val binding: ItemScrollviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val paddingLeft = itemView.paddingTop
-        val paddingRight = itemView.paddingTop
-
-        val disPlayItems = 3
-        val totalMargin = margin * disPlayItems
-        val imageWidth =
-            (recyclerViewWidth - totalMargin - paddingLeft - paddingRight) / disPlayItems
-
-        init {
-
-        }
-
-        fun bind(position: Int, goodsList: List<Goods>) {
+        fun bind(position: Int) {
             when (position) {
                 0 -> {
                     binding.tvTitle.text = "新品"
@@ -72,9 +60,7 @@ class GoodsListAdapter(private val onClick: (Goods) -> Unit) :
         val imageWidth =
             (recyclerViewWidth - totalMargin - paddingLeft - paddingRight) / disPlayItems
 
-        holder.bind(position, goodsList)
-//        holder.binding.tvTitle.text = "Title"
-//        holder.binding.tvSubTitle.text = "SubTitle"
+        holder.bind(position)
 
         goodsList.forEachIndexed { index, goods ->
             val binding = ItemGoodsBinding.inflate(

@@ -17,11 +17,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         super.onCreate(savedInstanceState)
 
         viewModel.accountError.observe(this, EventObserver {
-            viewBinding.edAccount.error = getString(it)
+            viewBinding.edAccount.error = if (it == null) it else getString(it)
         })
 
         viewModel.passwordError.observe(this, EventObserver {
-            viewBinding.edPassword.error = getString(it)
+            viewBinding.edPassword.error = if (it == null) it else getString(it)
         })
 
         viewModel.loginSuccess.observe(this) {

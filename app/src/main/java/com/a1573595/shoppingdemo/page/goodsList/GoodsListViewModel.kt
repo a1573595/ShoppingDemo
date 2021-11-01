@@ -8,7 +8,7 @@ import com.a1573595.shoppingdemo.database.DBHelper
 import com.a1573595.shoppingdemo.repository.GoodsRepository
 import com.a1573595.shoppingdemo.repository.IGoodsRepository
 import com.a1573595.shoppingdemo.tool.Event
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class GoodsListViewModel(val repository: IGoodsRepository = GoodsRepository()) : BaseViewModel() {
     var count: MutableLiveData<Int> = MutableLiveData()

@@ -17,11 +17,11 @@ class CartAdapter(private val viewModel: CartViewModel) :
 
         init {
             binding.tvReduce.setOnClickListener {
-                viewModel.reduceQuantity(absoluteAdapterPosition)
+                viewModel.reduceQuantity(adapterPosition)
             }
 
             binding.tvIncrease.setOnClickListener {
-                viewModel.increaseQuantity(absoluteAdapterPosition)
+                viewModel.increaseQuantity(adapterPosition)
             }
         }
 
